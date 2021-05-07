@@ -15,12 +15,10 @@ export default function PrestamosPage({navigation, route}){
     );
 
     const [errorMessage, setErrorMessage] = useState('');
-    const [sueldoMensual, setSueldoMensual] = useState(0);
+    let sueldoMensual = 0;
 
     const validar = () => {
-        if(sueldoMensual <= 0){
-            setErrorMessage('Inserte un sueldo válido')
-        }else if(cantidadSolicitada <= 0){
+if(cantidadSolicitada <= 0){
             setErrorMessage('Inserte una cantidad a solicitar válida')
         } else if(meses == null){
             setErrorMessage('Seleccione un plazo');
@@ -41,7 +39,7 @@ export default function PrestamosPage({navigation, route}){
                 style={styles.input} 
                 placeholder="Sueldo Mensual"
                 onChange={(e) => {
-                    setSueldoMensual(parseFloat(e.nativeEvent.text));
+                    sueldoMensual = parseFloat(e.nativeEvent.text);
                     if(sueldoMensual <= 10000){
                         setInteres(2);
                         setPlazos([
